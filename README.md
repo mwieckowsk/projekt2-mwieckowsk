@@ -1,5 +1,7 @@
 # Testowanie aplikacji JAVA 2017-2018
 ## Projekt 2 (Maven, JUnit oraz atrapy) 
+[![Build Status](https://travis-ci.com/TestowanieJAVA2017-2018Gr2/projekt2-mwieckowsk.svg?token=ppzziPqiHgEY7q1xgosf&branch=master)](https://travis-ci.com/TestowanieJAVA2017-2018Gr2/projekt2-mwieckowsk)
+[![Maintainability](https://api.codeclimate.com/v1/badges/1418f2e196706c080358/maintainability)](https://codeclimate.com/github/TestowanieJAVA2017-2018Gr2/projekt2-mwieckowsk/maintainability)
 
 -----------------------
 ### REGUŁY GRY
