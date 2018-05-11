@@ -1,6 +1,0 @@
-app/Messenger.class
-messenger/FakeMessageService.class
-messenger/MalformedRecipientException.class
-messenger/MessageService.class
-messenger/ConnectionStatus.class
-messenger/SendingStatus.class
