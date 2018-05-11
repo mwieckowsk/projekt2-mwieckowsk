@@ -30,7 +30,7 @@ public class FakeMessageServiceTest {
 
     @Test
     public void ValidMessageAndServer() {
-        assertThat(mes.sendMessage("google.pl", "cos tam cos"), is(anyOf(equalTo(0), equalTo(1))));
+        assertThat(mes.sendMessage("google.pl", "cos tam cos"), is(equalTo(0)));
     }
     
     @Test
@@ -40,12 +40,12 @@ public class FakeMessageServiceTest {
     
     @Test
     public void ValidMessageAndInvalidServer() {
-    	assertThat(mes.sendMessage("ErrorSending", "cos tam cos"), is(anyOf(equalTo(0), equalTo(1))));
+    	assertThat(mes.sendMessage("ErrorSending", "cos tam cos"), is(equalTo(1)));
     }
     
     @Test 
     public void InvalidMessageAndInvalidServer() {
-    	assertThat(mes.sendMessage("ErrorSending", "c"), is(0));
+    	assertThat(mes.sendMessage("ErrorSending", "c"), is(anyOf(equalTo(1), equalTo(2))));
     }
     
 }

@@ -27,10 +27,10 @@ public class Messenger {
 
         try {
             if (ms.send(server, message) == SendingStatus.SENT)
-                return 1;
+                return 0;
         } catch (MalformedRecipientException e) {
             return 2;
         }
-        return 0;
+        return 1;
     }
 }
