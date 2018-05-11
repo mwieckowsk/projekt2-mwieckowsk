@@ -1,0 +1,9 @@
+-------------------------------------------------------------------------------
+Test set: com.example.mockdemo.app.MessageAppTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.052 sec <<< FAILURE! - in com.example.mockdemo.app.MessageAppTest
+checkSendingMessage(com.example.mockdemo.app.MessageAppTest)  Time elapsed: 0.01 sec  <<< ERROR!
+java.lang.NullPointerException: null
+	at com.example.mockdemo.app.Messenger.sendMessage(Messenger.java:28)
+	at com.example.mockdemo.app.MessageAppTest.checkSendingMessage(MessageAppTest.java:21)
+

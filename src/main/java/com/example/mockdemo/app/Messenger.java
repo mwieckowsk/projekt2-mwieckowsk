@@ -1,5 +1,6 @@
 package com.example.mockdemo.app;
 
+import com.example.mockdemo.messenger.FakeMessageService;
 import com.example.mockdemo.messenger.MalformedRecipientException;
 import com.example.mockdemo.messenger.MessageService;
 import com.example.mockdemo.messenger.SendingStatus;

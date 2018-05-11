@@ -1,0 +1,9 @@
+-------------------------------------------------------------------------------
+Test set: MessageAppTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.055 sec <<< FAILURE! - in MessageAppTest
+checkSendingMessage(MessageAppTest)  Time elapsed: 0.009 sec  <<< ERROR!
+java.lang.NullPointerException: null
+	at Messenger.sendMessage(Messenger.java:21)
+	at MessageAppTest.checkSendingMessage(MessageAppTest.java:19)
+
