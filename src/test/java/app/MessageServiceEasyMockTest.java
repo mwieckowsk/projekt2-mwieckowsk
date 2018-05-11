@@ -15,10 +15,10 @@ import static org.easymock.EasyMock.*;
 
 public class MessageServiceEasyMockTest {
 
-    private Messenger mes;
-    private MessageService ms;
     private final String SERVER = "google.pl";
     private final String MESS = "Hello I iz Me";
+    private Messenger mes;
+    private MessageService ms;
     
     @Before
     public void Initialize() {
@@ -39,16 +39,18 @@ public class MessageServiceEasyMockTest {
         replay(ms);
         assertThat(mes.testConnection(SERVER), is(1));
     }
-    
+        
     @Test
-    public void CheckingSendingMethodSent() throws MalformedRecipientException {
-        expect(ms.send(SERVER, MESS)).andReturn(SendingStatus.SENT);
+    public void CheckingSendingAndConnectionSuccess() throws MalformedRecipientException {
+    	expect(ms.checkConnection(SERVER)).andReturn(ConnectionStatus.SUCCESS);
+    	expect(ms.send(SERVER, MESS)).andReturn(SendingStatus.SENT);
         replay(ms);
         assertThat(mes.sendMessage(SERVER, MESS), is(0));
     }
     
     @Test
     public void CheckingSendingMethodSendingError() throws MalformedRecipientException {
+    	expect(ms.checkConnection(SERVER)).andReturn(ConnectionStatus.FAILURE);
         expect(ms.send(SERVER, MESS)).andReturn(SendingStatus.SENDING_ERROR);
         replay(ms);
         assertThat(mes.sendMessage(SERVER, MESS), is(1));
@@ -62,11 +64,11 @@ public class MessageServiceEasyMockTest {
     }
     
     @Test
-    public void CheckingSendingAndConnectionSuccess() throws MalformedRecipientException {
+    public void CheckingConnectionSuccessAndSendingError() throws MalformedRecipientException {
     	expect(ms.checkConnection(SERVER)).andReturn(ConnectionStatus.SUCCESS);
-    	expect(ms.send(SERVER, MESS)).andReturn(SendingStatus.SENT);
+    	expect(ms.send(SERVER, null)).andThrow(new MalformedRecipientException());
         replay(ms);
-        assertThat(mes.sendMessage(SERVER, MESS), is(0));
+        assertThat(mes.sendMessage(SERVER, null), is(2));
     }
     
     

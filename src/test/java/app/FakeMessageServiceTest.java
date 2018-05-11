@@ -19,12 +19,12 @@ public class FakeMessageServiceTest {
     }
 
     @Test
-    public void ConnectionToValidServer() {
+    public void CheckingConnectionToSuccess() {
         assertThat(mes.testConnection("google.pl"), is(0));
     }
 
     @Test
-    public void ConnectionToInvalidServer() {
+    public void CheckingConnectionToFailure() {
         assertThat(mes.testConnection("google.com"), is(1));
     }
 
