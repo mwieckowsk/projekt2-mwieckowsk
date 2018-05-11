@@ -1,13 +1,8 @@
 package app;
 
-import org.junit.Before;
-import org.junit.Test;
 import org.mockito.Mock;
-
-import messenger.MalformedRecipientException;
-import messenger.MessageService;
-import messenger.SendingStatus;
-import messenger.ConnectionStatus;
+import org.junit.*;
+import messenger.*;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertThat;
@@ -31,39 +26,51 @@ public class MessageServiceMockitoTest {
     @Test
     public void CheckingConnectionToSuccess() {
     	when(ms.checkConnection(SERVER)).thenReturn(ConnectionStatus.SUCCESS);
-    	assertThat(mes.testConnection(SERVER), is(0));
+    	int checking = mes.testConnection(SERVER);
+    	verify(ms).checkConnection(SERVER);
+    	assertThat(checking, is(0));
     }
     
     @Test
     public void CheckingConnectionToFailure() {
     	when(ms.checkConnection(SERVER)).thenReturn(ConnectionStatus.FAILURE);
-    	assertThat(mes.testConnection(SERVER), is(1));
+    	int checking = mes.testConnection(SERVER);
+    	verify(ms).checkConnection(SERVER);
+    	assertThat(checking, is(1));
     }
     
     @Test
     public void CheckingSendingMethodSent() throws MalformedRecipientException {
     	when(ms.checkConnection(SERVER)).thenReturn(ConnectionStatus.SUCCESS);
     	when(ms.send(SERVER, MESS)).thenReturn(SendingStatus.SENT);
-    	assertThat(mes.sendMessage(SERVER, MESS), is(0));
+    	int checking = mes.sendMessage(SERVER, MESS);
+    	verify(ms).send(SERVER, MESS);
+    	assertThat(checking, is(0));
     }
     
     @Test
     public void CheckingSendingMethodSendingError() throws MalformedRecipientException {
     	when(ms.checkConnection(SERVER)).thenReturn(ConnectionStatus.FAILURE);
     	when(ms.send(SERVER, MESS)).thenReturn(SendingStatus.SENDING_ERROR);
-    	assertThat(mes.sendMessage(SERVER, MESS), is(1));
+    	int checking = mes.sendMessage(SERVER, MESS);
+    	verify(ms).send(SERVER, MESS);
+    	assertThat(checking, is(1));
     }
     
     @Test
     public void CheckingSendingMethodException() throws MalformedRecipientException {
     	when(ms.send(null, null)).thenThrow(new MalformedRecipientException());
-    	assertThat(mes.sendMessage(null, null), is(2));
+    	int checking = mes.sendMessage(null, null);
+    	verify(ms).send(null, null);
+    	assertThat(checking, is(2));
     }
     
     @Test
     public void CheckingConnectionSuccessAndSendingError() throws MalformedRecipientException {
     	when(ms.checkConnection(SERVER)).thenReturn(ConnectionStatus.SUCCESS);
     	when(ms.send(SERVER, null)).thenThrow(new MalformedRecipientException());
-    	assertThat(mes.sendMessage(SERVER, null), is(2));
+    	int checking = mes.sendMessage(SERVER, null);
+    	verify(ms).send(SERVER, null);
+    	assertThat(checking, is(2));
     }
 }

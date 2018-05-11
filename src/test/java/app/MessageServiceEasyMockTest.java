@@ -1,14 +1,9 @@
 package app;
 
-import org.junit.Before;
-import org.junit.Test;
-
-import messenger.MalformedRecipientException;
-import messenger.MessageService;
-import messenger.SendingStatus;
-import messenger.ConnectionStatus;
-
 import org.easymock.*;
+import org.junit.*;
+import messenger.*;
+
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertThat;
 import static org.easymock.EasyMock.*;
